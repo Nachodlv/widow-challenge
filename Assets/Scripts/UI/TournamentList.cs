@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using PubgAPI;
 using PubgAPI.Models;
 using UnityEngine;
 
@@ -7,14 +8,22 @@ namespace UI
 {
     public class TournamentList : MonoBehaviour
     {
+        [SerializeField] private PubgService pubgService;
         [SerializeField] private TournamentUI tournamentUiPrefab;
         [SerializeField] private RectTransform content;
+        [SerializeField] private GameObject loader;
+        [SerializeField] private ErrorDisplayer errorDisplayer;
 
         private List<TournamentUI> _tournamentUiPool;
 
         private void Awake()
         {
             _tournamentUiPool = new List<TournamentUI>();
+        }
+
+        private void Start()
+        {
+            Reload();
         }
 
         public void AddTournaments(Tournament[] tournaments)
@@ -26,6 +35,17 @@ namespace UI
             }
 
             DeactivateUnused(tournaments);
+            loader.SetActive(false);
+        }
+
+        public void Reload()
+        {
+            loader.SetActive(true);
+            pubgService.GetTournaments(AddTournaments, error =>
+            {
+                errorDisplayer.ShowError(error);
+                loader.SetActive(false);
+            });
         }
 
         private void DeactivateUnused(Tournament[] tournaments)
