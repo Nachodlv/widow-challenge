@@ -7,8 +7,15 @@ namespace PubgAPI.Models
     public class Tournament
     {
         [SerializeField] private string id;
-        [SerializeField] private string createdAt;
+        [SerializeField] private Attributes attributes;
         public string Id => id;
+        public string CreatedAt => attributes.CreatedAt;
+    }
+
+    [Serializable]
+    public class Attributes
+    {
+        [SerializeField] private string createdAt;
         public string CreatedAt => createdAt;
     }
 }
