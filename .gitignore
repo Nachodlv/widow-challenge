@@ -61,3 +61,7 @@ crashlytics-build.properties
 
 # Configration file for Dolphine file manager
 .directory
+
+# Api key
+/Assets/Resources/Credentials/
+/Assets/Resources/Credentials.meta
