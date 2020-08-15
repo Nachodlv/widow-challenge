@@ -10,6 +10,9 @@ namespace UI
         [SerializeField] private TextMeshProUGUI idText;
         [SerializeField] private TextMeshProUGUI dateText;
 
+        /// <summary>
+        /// <para>Sets the idText and the dateText from the Tournament</para>
+        /// </summary>
         public Tournament Tournament
         {
             set

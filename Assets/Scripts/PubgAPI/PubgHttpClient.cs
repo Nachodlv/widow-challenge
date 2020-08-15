@@ -16,6 +16,12 @@ namespace PubgAPI
             _apiKey = apiKey;
         }
 
+        /// <summary>
+        /// <para>Makes a GET request to https://api.pubg.com/</para>
+        /// </summary>
+        /// <param name="monoBehaviour">Used to start the coroutine needed to await the get request</param>
+        /// <param name="url">Added at the end of https://api.pubg.com/</param>
+        /// <param name="callback">Invoked when the request is finished</param>
         public void Get(MonoBehaviour monoBehaviour, string url, GetCallback callback)
         {
             monoBehaviour.StartCoroutine(MakeGetRequest(url, callback));

@@ -26,6 +26,10 @@ namespace UI
             Reload();
         }
 
+        /// <summary>
+        /// <para>Creates a list with tournaments passed as argument</para>
+        /// </summary>
+        /// <param name="tournaments"></param>
         public void AddTournaments(Tournament[] tournaments)
         {
             for (var i = 0; i < tournaments.Length; i++)
@@ -38,6 +42,10 @@ namespace UI
             loader.SetActive(false);
         }
 
+        /// <summary>
+        /// <para>Makes a get request to the pubg api and add the tournaments to the list.</para>
+        /// <para>If the request fails it will show a message error displaying it</para>
+        /// </summary>
         public void Reload()
         {
             loader.SetActive(true);

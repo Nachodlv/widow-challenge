@@ -14,6 +14,11 @@ namespace UI
 
         private Coroutine _hideCoroutine;
 
+        /// <summary>
+        /// <para>Displays an error on the bottom of the screen</para>
+        /// </summary>
+        /// <param name="error">The message that will be shown</param>
+        /// <param name="secondsShowing">The time that the message will be displayed</param>
         public void ShowError(string error, float secondsShowing = 2)
         {
             textError.text = error;
@@ -22,7 +27,7 @@ namespace UI
             _hideCoroutine = StartCoroutine(WaitUntilHideError(secondsShowing));
         }
 
-        public void HideError()
+        private void HideError()
         {
             CancelCoroutine();
             animator.SetTrigger(HideErrorTrigger);
